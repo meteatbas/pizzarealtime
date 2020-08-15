@@ -5286,8 +5286,8 @@ addToCart.forEach(function (btn) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mete\Desktop\Projects\realtime-pizza\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mete\Desktop\Projects\realtime-pizza\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! C:\Users\metea\Desktop\projects\pizzarealtime\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\metea\Desktop\projects\pizzarealtime\resources\scss\app.scss */"./resources/scss/app.scss");
 
 
 /***/ })

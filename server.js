@@ -20,7 +20,7 @@ const flash=require('express-flash');
 
 const MongoDbStore=require('connect-mongo')(session);
 
-
+const passport=require('passport');
 
 
 //Database connection
@@ -32,6 +32,8 @@ connection.once('open',()=>{
 }).catch(err=>{
     console.log('DB not connected');
 })
+
+
 
 //Session Store
 
@@ -51,17 +53,26 @@ app.use(session({
     cookie:{maxAge:1000*60*60*24}// 24 hours
 }));
 
+//passport config
+const passportInit=require('./app/config/passport');
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 app.use(flash())
 
 //Assests
 app.use(express.static('public'))
-app.use(express.json())
+//we need these for post and put method
+app.use(express.urlencoded({ extended:false}))//is a method inbuilt in express to recognize the incoming Request Object as strings or arrays.
+app.use(express.json())//body parser
 
 //Global middleware
 
 app.use((req,res,next)=>{
     res.locals.session = req.session
+    res.locals.user=req.user//to use user in template
     next();
 })
 
